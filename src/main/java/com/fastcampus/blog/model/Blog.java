@@ -24,6 +24,6 @@ public class Blog {
     private Member member;
 
     @OneToMany
-    private List<Post> postList;
+    private List<Post> posts;
 
 }
