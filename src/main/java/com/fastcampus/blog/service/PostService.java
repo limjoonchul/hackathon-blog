@@ -17,5 +17,9 @@ public class PostService {
         return postRepository.findAll();
     }
 
+    public Post getPost(Long id) {
+        return postRepository.findPostById(id).orElse(Post.emptyObject());
+    }
+
 
 }
