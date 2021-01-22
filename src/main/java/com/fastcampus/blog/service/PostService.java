@@ -1,6 +1,7 @@
 package com.fastcampus.blog.service;
 
 import com.fastcampus.blog.dto.PostDto;
+import com.fastcampus.blog.exception.IdRequiredException;
 import com.fastcampus.blog.model.Post;
 import com.fastcampus.blog.repository.PostRepository;
 import lombok.RequiredArgsConstructor;
@@ -19,6 +20,9 @@ public class PostService {
     }
 
     public Post getPost(Long id) {
+        if(id == null) {
+            throw  new IdRequiredException("id는 필수값");
+        }
         return postRepository.findPostById(id).orElse(Post.emptyObject());
     }
 
