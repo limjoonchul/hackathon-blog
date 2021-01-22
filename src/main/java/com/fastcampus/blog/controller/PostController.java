@@ -31,5 +31,9 @@ public class PostController {
         return  postService.writePost(dto);
     }
 
+    @PostMapping("/api/updatePost")
+    public Post updatePost(@RequestBody @Valid PostDto dto) {
+        return  postService.updatePost(dto);
+    }
 
 }
