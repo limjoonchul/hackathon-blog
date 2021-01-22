@@ -66,4 +66,19 @@ class PostControllerTest {
                 .andExpect(jsonPath("$.content").value("writeContent"));
 
     }
+
+    @Test
+    void updatePostTest() throws Exception {
+        mockMvc.perform(MockMvcRequestBuilders.post("/api/updatePost")
+                .contentType(MediaType.APPLICATION_JSON_VALUE)
+                .content(
+                        objectMapper.writeValueAsString(
+                                new PostDto(2L, "updateTitle", "updateContent", null, null)
+                        )
+
+                ))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.title").value("updateTitle"))
+                .andExpect(jsonPath("$.content").value("updateContent"));
+    }
 }
