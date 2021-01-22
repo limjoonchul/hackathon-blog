@@ -61,6 +61,13 @@ class CommentServiceTest {
         assertThat(comment.getMember().getNickname()).isEqualTo("martin");
     }
 
+    @Test
+    void getCommentByMemberNickNameIsNull(){
+
+        assertThrows(RuntimeException.class, () -> commentService.getCommentByMemberNickName(null));
+
+    }
+
     private Comment mockComment(){
         Member member = new Member();
         member.setId(2L);
