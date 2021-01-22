@@ -81,4 +81,11 @@ class PostControllerTest {
                 .andExpect(jsonPath("$.title").value("updateTitle"))
                 .andExpect(jsonPath("$.content").value("updateContent"));
     }
+
+    @Test
+    void deletePostTest() throws Exception {
+        mockMvc.perform(MockMvcRequestBuilders.get("/api/deletePost/3"))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.deleted").value("true"));
+    }
 }
