@@ -38,4 +38,7 @@ public class Post {
     @ColumnDefault("false")
     private boolean deleted;
 
+    public static Post emptyObject() {
+        return new Post();
+    }
 }
