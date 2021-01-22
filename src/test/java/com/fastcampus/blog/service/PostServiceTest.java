@@ -35,6 +35,22 @@ class PostServiceTest {
 
     }
 
+    @Test
+    void getPostTest() {
+        Post post = new Post();
+        post.setId(1L);
+        post.setTitle("getPostTestTitle");
+
+        when(postRepository.findPostById(1L)).thenReturn(java.util.Optional.of(post));
+
+        Post result = postService.getPost(1L);
+
+        assertThat(result.getTitle()).isEqualTo("getPostTestTitle");
+
+    }
+
+    
+
     private List<Post> mockPosts() {
         List<Post> posts = new ArrayList<>();
         Post post = new Post();
