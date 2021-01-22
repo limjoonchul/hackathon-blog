@@ -32,6 +32,8 @@ public class PostService {
 
         post.setTitle(postDto.getTitle());
         post.setContent(postDto.getContent());
+        post.setBlog(postDto.getBlog());
+        post.setMember(postDto.getMember());
 
         postRepository.save(post);
 
@@ -44,8 +46,6 @@ public class PostService {
 
         post.setTitle(postDto.getTitle());
         post.setContent(postDto.getContent());
-        post.setBlog(postDto.getBlog());
-        post.setMember(postDto.getMember());
 
         postRepository.save(post);
 
