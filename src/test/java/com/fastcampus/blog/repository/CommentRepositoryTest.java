@@ -24,10 +24,10 @@ class CommentRepositoryTest {
 
         // when 
         Optional<Comment> findComment = commentRepository.findCommentByMember_Nickname("martin");
-        Comment  comment1 = findComment.get();
+        Comment  result = findComment.get();
 
         // then
-        assertThat(comment1.getContent()).isEqualTo("제목입니다");
+        assertThat(result.getContent()).isEqualTo("제목입니다");
     }
 
 }
