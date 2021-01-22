@@ -10,8 +10,8 @@ POST http://localhost:8090/api/writePost
 Content-Type: application/json
 
 {
-  "title": "martin",
-  "content": "martin@fascampus.com"
+  "title": "ILoveYouMartin",
+  "content": "SoMuch"
 }
 
 ###
@@ -19,8 +19,8 @@ POST http://localhost:8090/api/updatePost
 Content-Type: application/json
 
 {
-  "title": "martin",
-  "content": "martin@fascampus.com"
+  "title": "ILoveYouMartin",
+  "content": "SoMuch"
 }
 
 ###
