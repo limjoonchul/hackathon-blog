@@ -1,11 +1,11 @@
 package com.fastcampus.blog.dto;
 
+
 import com.fastcampus.blog.model.Member;
 import com.fastcampus.blog.model.Post;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.NonNull;
 
 import javax.validation.constraints.NotEmpty;
 
@@ -13,7 +13,6 @@ import javax.validation.constraints.NotEmpty;
 @AllArgsConstructor
 @NoArgsConstructor
 public class CommentDto {
-
 
     private Long id;
 
