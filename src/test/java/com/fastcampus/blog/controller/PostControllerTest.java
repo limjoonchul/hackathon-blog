@@ -35,4 +35,12 @@ class PostControllerTest {
                 .andExpect(jsonPath("$.[0].title").value("title"))
                 .andExpect(jsonPath("$.[0].content").value("content"));
     }
+
+    @Test
+    void getPostTest() throws Exception {
+        mockMvc.perform(MockMvcRequestBuilders.get("/api/post/1"))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.title").value("title"))
+                .andExpect(jsonPath("$.content").value("content"));
+    }
 }
