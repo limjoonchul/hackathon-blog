@@ -1,12 +1,12 @@
 package com.fastcampus.blog.controller;
 
+import com.fastcampus.blog.dto.PostDto;
 import com.fastcampus.blog.model.Post;
 import com.fastcampus.blog.service.PostService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,6 +26,10 @@ public class PostController {
         return  postService.getPost(id);
     }
 
+    @PostMapping("/api/writePost")
+    public Post writePost(@RequestBody @Valid PostDto dto) {
+        return  postService.writePost(dto);
+    }
 
 
 }
