@@ -30,8 +30,6 @@ class PostServiceTest {
 
         List<Post> result = postService.getPosts();
 
-        System.out.println(">>>" + result);
-
         assertThat(result.size()).isEqualTo(1);
         assertThat(result.get(0).getTitle()).isEqualTo("mockTestTitle");
 
