@@ -75,7 +75,7 @@ class PostServiceTest {
 
         verify(postRepository, times(1)).findPostById(1L);
         verify(postRepository, times(1)).save(any(Post.class));
-//        assertThat(result.isDeleted()).isEqualTo(true);
+        verify(result, times(1)).setDeleted(false);
     }
 
 
