@@ -43,7 +43,7 @@ public class CommentService {
     public void updateComment(@Valid CommentDto commentDto) {
         Optional<Comment> findComment = commentRepository.findById(commentDto.getId());
 
-        Comment comment = findComment.orElse(Comment.emptyComment());
+        Comment comment = findComment.orElse(Comment.emptyObject());
         comment.setContent(commentDto.getContent());
   
         commentRepository.save(comment);
@@ -58,7 +58,7 @@ public class CommentService {
         Optional<Comment> findCommentByNickName = commentRepository.findCommentByMember_Nickname(name);
 
 
-        return findCommentByNickName.orElse(Comment.emptyComment());
+        return findCommentByNickName.orElse(Comment.emptyObject());
 
     }
 
