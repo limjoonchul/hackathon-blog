@@ -19,6 +19,9 @@ public class Member {
     @Column(unique = true)
     private String email;
 
+    @Column(unique = true)
+    private String nickname;
+
     private String password;
 
     @OneToOne
