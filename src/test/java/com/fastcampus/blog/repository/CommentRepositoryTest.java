@@ -22,7 +22,7 @@ class CommentRepositoryTest {
     void getCommentByMemberNickName(){
         // given
 
-        // when
+        // when 
         Optional<Comment> findComment = commentRepository.findCommentByMember_Nickname("martin");
         Comment  comment1 = findComment.get();
 
