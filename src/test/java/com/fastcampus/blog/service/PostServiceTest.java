@@ -1,5 +1,6 @@
 package com.fastcampus.blog.service;
 
+import com.fastcampus.blog.dto.PostDto;
 import com.fastcampus.blog.model.Post;
 import com.fastcampus.blog.repository.PostRepository;
 import org.junit.jupiter.api.Test;
@@ -53,6 +54,18 @@ class PostServiceTest {
     @Test
     void getPostTestIfNull() {
         assertThrows(RuntimeException.class, () -> postService.getPost(null));
+    }
+
+    @Test
+    void updatePostTest() {
+        PostDto postDto = new PostDto();
+        postDto.setId(1L);
+
+        postService.updatePost(postDto);
+
+        verify(postRepository, times(1)).findPostById(1L);
+        verify(postRepository, times(1)).save(any(Post.class));
+
     }
 
 
