@@ -69,8 +69,7 @@ class CommentServiceTest {
         when(commentRepository.findCommentByMember_Nickname("martin")).thenReturn(java.util.Optional.of(mockComment()));
 
         Comment comment = commentService.getCommentByMemberNickName("martin");
-
-        System.out.println(">>> comment " + comment);
+        
 
         assertThat(comment.getMember().getNickname()).isEqualTo("martin");
     }
