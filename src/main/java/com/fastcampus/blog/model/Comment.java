@@ -3,6 +3,8 @@ package com.fastcampus.blog.model;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.ColumnDefault;
+import org.hibernate.annotations.Where;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -13,6 +15,7 @@ import javax.persistence.ManyToOne;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@Where(clause = "deleted = false")
 public class Comment {
 
     @Id
@@ -26,4 +29,7 @@ public class Comment {
 
     @ManyToOne
     private Member member;
+
+    @ColumnDefault("false")
+    private boolean deleted;
 }

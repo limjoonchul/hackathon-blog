@@ -3,6 +3,8 @@ package com.fastcampus.blog.model;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.ColumnDefault;
+import org.hibernate.annotations.Where;
 
 import javax.persistence.*;
 import java.util.List;
@@ -11,6 +13,7 @@ import java.util.List;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@Where(clause = "deleted = false")
 public class Post {
 
     @Id
@@ -30,5 +33,8 @@ public class Post {
 
     @OneToMany
     private List<Comment> comments;
+
+    @ColumnDefault("false")
+    private boolean deleted;
 
 }
