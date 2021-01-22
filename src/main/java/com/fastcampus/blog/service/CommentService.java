@@ -22,4 +22,9 @@ public class CommentService {
 
         return findComment.orElseGet(() -> findComment.orElse(new Comment()));
     }
+
+    public void removeComment(Long id){
+        commentRepository.deleteById(id);
+    }
+    
 }
