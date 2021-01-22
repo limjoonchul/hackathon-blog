@@ -21,5 +21,8 @@ public class PostService {
         return postRepository.findPostById(id).orElse(Post.emptyObject());
     }
 
+//    public Post writePost(PostDto) {
+//
+//    }
 
 }
