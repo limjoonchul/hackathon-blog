@@ -2,12 +2,15 @@ package com.fastcampus.blog.service;
 
 import com.fastcampus.blog.dto.CommentDto;
 import com.fastcampus.blog.model.Comment;
+import com.fastcampus.blog.model.Member;
 import com.fastcampus.blog.repository.CommentRepository;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
+
+import javax.sound.midi.Soundbank;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
@@ -46,6 +49,25 @@ class CommentServiceTest {
 
         verify(commentRepository, times(1)).deleteById(1L);
     }
+
+    @Test
+    void getCommentByMemberNickName(){
+        when(commentRepository.findCommentByMember_Nickname("martin")).thenReturn(java.util.Optional.of(mockComment()));
+
+        Comment comment = commentService.getCommentByMemberNickName("martin");
+
+        System.out.println(">>> comment " + comment);
+
+        assertThat(comment.getMember().getNickname()).isEqualTo("martin");
+    }
+
+    private Comment mockComment(){
+        Member member = new Member();
+        member.setId(2L);
+        member.setNickname("martin");
+        return new Comment(2L, "반가워요!", null, member, false);
+    }
+
 
 
 }
