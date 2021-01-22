@@ -29,4 +29,8 @@ public class Comment {
 
     @ColumnDefault("false")
     private boolean deleted;
+
+    public static Comment emptyComment(){
+        return new Comment();
+    }
 }
