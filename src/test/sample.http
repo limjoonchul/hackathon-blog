@@ -1,0 +1,28 @@
+GET http://localhost:8090/api/posts
+
+###
+
+GET http://localhost:8090/api/post/1
+
+###
+
+POST http://localhost:8090/api/writePost
+Content-Type: application/json
+
+{
+  "title": "martin",
+  "content": "martin@fascampus.com"
+}
+
+###
+POST http://localhost:8090/api/updatePost
+Content-Type: application/json
+
+{
+  "title": "martin",
+  "content": "martin@fascampus.com"
+}
+
+###
+GET http://localhost:8090/api/deletePost/1
+
