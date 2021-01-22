@@ -12,7 +12,7 @@ import java.util.List;
 public class Blog {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(unique = true)
@@ -21,7 +21,7 @@ public class Blog {
     @OneToOne
     private Member member;
 
-    @OneToMany
+    @OneToMany(fetch = FetchType.EAGER)
     private List<Post> posts;
 
 }
