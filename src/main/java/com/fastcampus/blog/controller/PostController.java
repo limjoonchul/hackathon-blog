@@ -7,7 +7,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -18,27 +17,27 @@ public class PostController {
 
     @GetMapping("/api/posts")
     public List<Post> getPosts() {
-        return  postService.getPosts();
+        return postService.getPosts();
     }
 
     @GetMapping("/api/post/{id}")
     public Post getPost(@PathVariable Long id) {
-        return  postService.getPost(id);
+        return postService.getPost(id);
     }
 
     @PostMapping("/api/writePost")
     public Post writePost(@RequestBody @Valid PostDto dto) {
-        return  postService.writePost(dto);
+        return postService.writePost(dto);
     }
 
     @PostMapping("/api/updatePost")
     public Post updatePost(@RequestBody @Valid PostDto dto) {
-        return  postService.updatePost(dto);
+        return postService.updatePost(dto);
     }
 
     @GetMapping("/api/deletePost/{id}")
     public Post deletePost(@PathVariable Long id) {
-        return  postService.deletePost(id);
+        return postService.deletePost(id);
     }
 
 }
