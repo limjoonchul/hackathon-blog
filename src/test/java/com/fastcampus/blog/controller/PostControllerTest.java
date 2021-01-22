@@ -1,9 +1,13 @@
 package com.fastcampus.blog.controller;
 
+import com.fastcampus.blog.dto.PostDto;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MockMvcBuilder;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
@@ -20,6 +24,9 @@ class PostControllerTest {
 
     private MockMvc mockMvc;
 
+    @Autowired
+    private ObjectMapper objectMapper;
+
     @BeforeEach
     void before(WebApplicationContext wac) {
         mockMvc = MockMvcBuilders.webAppContextSetup(wac)
@@ -29,7 +36,7 @@ class PostControllerTest {
     }
 
     @Test
-    void getPostsTest() throws Exception{
+    void getPostsTest() throws Exception {
         mockMvc.perform(MockMvcRequestBuilders.get("/api/posts"))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.[0].title").value("title"))
@@ -42,5 +49,21 @@ class PostControllerTest {
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.title").value("title"))
                 .andExpect(jsonPath("$.content").value("content"));
+    }
+
+    @Test
+    void writePostTest() throws Exception {
+        mockMvc.perform(MockMvcRequestBuilders.post("/api/writePost")
+                .contentType(MediaType.APPLICATION_JSON_VALUE)
+                .content(
+                        objectMapper.writeValueAsString(
+                                new PostDto(2L, "writeTitle", "writeContent", null, null)
+                        )
+
+                ))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.title").value("writeTitle"))
+                .andExpect(jsonPath("$.content").value("writeContent"));
+
     }
 }
