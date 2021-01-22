@@ -73,7 +73,6 @@ class PostServiceTest {
 
         verify(postRepository, times(1)).findPostById(1L);
         verify(postRepository, times(1)).save(any(Post.class));
-        verify(result, times(1)).setDeleted(false);
     }
 
 
