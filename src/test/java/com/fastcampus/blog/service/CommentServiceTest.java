@@ -1,9 +1,11 @@
 package com.fastcampus.blog.service;
 
 import com.fastcampus.blog.dto.CommentDto;
+import com.fastcampus.blog.exception.NameRequiredException;
 import com.fastcampus.blog.model.Comment;
 import com.fastcampus.blog.model.Member;
 import com.fastcampus.blog.repository.CommentRepository;
+import javafx.beans.binding.When;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -51,6 +53,18 @@ class CommentServiceTest {
     }
 
     @Test
+    void updateComment(){
+        CommentDto commentDto = new CommentDto();
+        commentDto.setId(1L);
+        commentDto.setContent("반가워요");
+
+        commentService.updateComment(commentDto);
+
+        verify(commentRepository, times(1)).save(any(Comment.class));
+
+    }
+
+    @Test
     void getCommentByMemberNickName(){
         when(commentRepository.findCommentByMember_Nickname("martin")).thenReturn(java.util.Optional.of(mockComment()));
 
@@ -64,7 +78,7 @@ class CommentServiceTest {
     @Test
     void getCommentByMemberNickNameIsNull(){
 
-        assertThrows(RuntimeException.class, () -> commentService.getCommentByMemberNickName(null));
+        assertThrows(NameRequiredException.class, () -> commentService.getCommentByMemberNickName(null));
 
     }
 
