@@ -12,7 +12,6 @@ import javax.persistence.*;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Where(clause = "deleted = false")
 public class Member {
 
     @Id
@@ -27,7 +26,6 @@ public class Member {
     @OneToOne
     private Blog blog;
 
-    @ColumnDefault("false")
-    private boolean deleted;
+
 
 }
