@@ -1,8 +1,8 @@
 package com.fastcampus.blog.dto;
 
 
+import com.fastcampus.blog.model.Blog;
 import com.fastcampus.blog.model.Member;
-import com.fastcampus.blog.model.Post;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -12,16 +12,18 @@ import javax.validation.constraints.NotEmpty;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class CommentDto {
+public class PostDto {
 
     private Long id;
 
     @NotEmpty
+    private String title;
+
+    @NotEmpty
     private String content;
 
-    private Post post;
+    private Blog blog;
 
-    private Member member;
-
+    private Member Member;
 
 }
