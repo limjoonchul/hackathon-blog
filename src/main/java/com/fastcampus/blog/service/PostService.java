@@ -52,13 +52,15 @@ public class PostService {
         return post;
     }
 
-    public void deletePost(Long id) {
+    public Post deletePost(Long id) {
 
         Post post = postRepository.findPostById(id).orElse(Post.emptyObject());
 
         post.setDeleted(true);
 
         postRepository.save(post);
+
+        return post;
     }
 
 
