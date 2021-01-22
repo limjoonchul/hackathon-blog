@@ -4,6 +4,7 @@ import com.fastcampus.blog.model.Post;
 import com.fastcampus.blog.service.PostService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
@@ -19,5 +20,12 @@ public class PostController {
     public List<Post> getPosts() {
         return  postService.getPosts();
     }
+
+    @GetMapping("/api/post/{id}")
+    public Post getPost(@PathVariable Long id) {
+        return  postService.getPost(id);
+    }
+
+
 
 }
