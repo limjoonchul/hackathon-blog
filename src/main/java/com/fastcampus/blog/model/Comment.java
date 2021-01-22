@@ -30,7 +30,7 @@ public class Comment {
     @ColumnDefault("false")
     private boolean deleted;
 
-    public static Comment emptyComment(){
+    public static Comment emptyObject(){
         return new Comment();
     }
 }
