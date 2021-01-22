@@ -20,7 +20,7 @@ public class CommentService {
 
         Optional<Comment> findComment = commentRepository.findById(id);
 
-        return findComment.orElseGet(() -> findComment.orElse(Comment.emptyComment()));
+        return findComment.orElseGet(() -> findComment.orElse(Comment.emptyObject()));
     }
 
     public void saveComment(@Valid CommentDto commentDto) {
