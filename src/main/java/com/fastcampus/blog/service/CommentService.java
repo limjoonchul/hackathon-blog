@@ -26,5 +26,14 @@ public class CommentService {
     public void removeComment(Long id){
         commentRepository.deleteById(id);
     }
-    
+
+    public void updateComment(@Valid CommentDto commentDto) {
+        Optional<Comment> findComment = commentRepository.findById(commentDto.getId());
+        Comment comment = findComment.get();
+
+        comment.setContent(commentDto.getContent());
+
+        commentRepository.save(comment);
+    }
+
 }
