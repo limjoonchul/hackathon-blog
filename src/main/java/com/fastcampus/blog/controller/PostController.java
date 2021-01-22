@@ -36,4 +36,9 @@ public class PostController {
         return  postService.updatePost(dto);
     }
 
+    @GetMapping("/api/deletePost/{id}")
+    public Post updatePost(@PathVariable Long id) {
+        return  postService.deletePost(id);
+    }
+
 }
