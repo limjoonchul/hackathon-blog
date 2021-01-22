@@ -1,6 +1,7 @@
 package com.fastcampus.blog.service;
 
 import com.fastcampus.blog.dto.CommentDto;
+import com.fastcampus.blog.exception.NameRequiredException;
 import com.fastcampus.blog.model.Comment;
 import com.fastcampus.blog.repository.CommentRepository;
 import lombok.RequiredArgsConstructor;
@@ -41,17 +42,17 @@ public class CommentService {
 
     public void updateComment(@Valid CommentDto commentDto) {
         Optional<Comment> findComment = commentRepository.findById(commentDto.getId());
-        Comment comment = findComment.get();
 
+        Comment comment = findComment.orElse(Comment.emptyComment());
         comment.setContent(commentDto.getContent());
 
         commentRepository.save(comment);
     }
 
-    public Comment getCommentByMemberNickName(String name){
+    public Comment getCommentByMemberNickName(String name) {
 
-        if (!StringUtils.hasText(name)){
-            throw new RuntimeException("NickName을 확인 하세요!");
+        if (!StringUtils.hasText(name)) {
+            throw new NameRequiredException("NickName을 확인 하세요!");
         }
 
         Optional<Comment> findCommentByNickName = commentRepository.findCommentByMember_Nickname(name);
